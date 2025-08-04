@@ -1,6 +1,5 @@
-const API_URL = "https://react-fast-pizza-api.jonas.io/api";
+const API_URL = 'https://react-fast-pizza-api.jonas.io/api';
 
-//=> Get the menu Items
 export async function getMenu() {
   const res = await fetch(`${API_URL}/menu`);
 
@@ -19,7 +18,6 @@ export async function getOrder(id) {
   return data;
 }
 
-//=> Create and place order
 export async function createOrder(newOrder) {
   try {
     const res = await fetch(`${API_URL}/order`, {
@@ -38,7 +36,6 @@ export async function createOrder(newOrder) {
   }
 }
 
-//=> Update the order details
 export async function updateOrder(id, updateObj) {
   try {
     const res = await fetch(`${API_URL}/order/${id}`, {
