@@ -1,4 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import Home from './ui/Home';
 import Error from './ui/Error';
@@ -45,6 +47,16 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const darkMode = useSelector((state) => state.theme.darkMode);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   return <RouterProvider router={router} />;
 }
 

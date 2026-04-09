@@ -24,7 +24,6 @@ function Order() {
     [fetcher],
   );
 
-  // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
   const {
     id,
     status,
@@ -38,61 +37,78 @@ function Order() {
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
   return (
-    <div className="space-y-8 px-4 py-6">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-xl font-semibold">Order #{id} status</h2>
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-3xl font-bold text-stone-900 dark:text-white">
+          Order #{id}
+        </h1>
 
-        <div className="space-x-2">
+        <div className="flex flex-wrap gap-3">
           {priority && (
-            <span className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50">
-              Priority
+            <span className="inline-block rounded-full bg-red-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white">
+              🚀 Priority
             </span>
           )}
-          <span className="rounded-full bg-green-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-green-50">
-            {status} order
+          <span className="inline-block rounded-full bg-green-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white">
+            ✓ {status}
           </span>
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-2 bg-stone-200 px-6 py-5">
-        <p className="font-medium">
+      {/* Delivery Status */}
+      <div className="rounded-lg border border-amber-200 bg-amber-50 px-6 py-5 dark:border-stone-700 dark:bg-stone-900">
+        <p className="mb-2 text-lg font-semibold text-stone-900 dark:text-white">
           {deliveryIn >= 0
-            ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
-            : 'Order should have arrived'}
+            ? `🚚 Only ${deliveryIn} minutes left!`
+            : '✓ Order delivered'}
         </p>
-        <p className="text-xs text-stone-500">
-          (Estimated delivery: {formatDate(estimatedDelivery)})
+        <p className="text-sm text-stone-600 dark:text-stone-400">
+          Estimated delivery:{' '}
+          <span className="font-medium">{formatDate(estimatedDelivery)}</span>
         </p>
       </div>
 
-      <ul className="dive-stone-200 divide-y border-b border-t">
-        {cart.map((item) => (
-          <OrderItem
-            item={item}
-            key={item.pizzaId}
-            isLoadingIngredients={fetcher.state === 'loading'}
-            ingredients={
-              fetcher?.data?.find((el) => el.id === item.pizzaId).ingredients ??
-              []
-            }
-          />
-        ))}
-      </ul>
+      {/* Order Items */}
+      <div className="overflow-hidden rounded-lg border border-stone-200 dark:border-stone-700">
+        <ul className="divide-y divide-stone-200 dark:divide-stone-700">
+          {cart.map((item) => (
+            <OrderItem
+              item={item}
+              key={item.pizzaId}
+              isLoadingIngredients={fetcher.state === 'loading'}
+              ingredients={
+                fetcher?.data?.find((el) => el.id === item.pizzaId)
+                  ?.ingredients ?? []
+              }
+            />
+          ))}
+        </ul>
+      </div>
 
-      <div className="space-y-2 bg-stone-200 px-6 py-5">
-        <p className="text-sm font-medium text-stone-600">
-          Price pizza: {formatCurrency(orderPrice)}
-        </p>
+      {/* Price Summary */}
+      <div className="space-y-3 rounded-lg border border-stone-200 bg-stone-100 px-6 py-5 dark:border-stone-700 dark:bg-stone-900">
+        <div className="flex justify-between text-stone-700 dark:text-stone-300">
+          <span>Pizza subtotal:</span>
+          <span className="font-semibold">{formatCurrency(orderPrice)}</span>
+        </div>
         {priority && (
-          <p className="text-sm font-medium text-stone-600">
-            Price priority: {formatCurrency(priorityPrice)}
-          </p>
+          <div className="flex justify-between text-stone-700 dark:text-stone-300">
+            <span>Priority fee (20%):</span>
+            <span className="font-semibold text-red-600 dark:text-red-400">
+              {formatCurrency(priorityPrice)}
+            </span>
+          </div>
         )}
-        <p className="font-bold">
-          To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
-        </p>
+        <div className="flex justify-between border-t border-stone-300 pt-3 text-lg font-bold text-stone-900 dark:border-stone-600 dark:text-white">
+          <span>Total to pay on delivery:</span>
+          <span className="text-amber-600 dark:text-amber-400">
+            {formatCurrency(orderPrice + priorityPrice)}
+          </span>
+        </div>
       </div>
 
+      {/* Update Priority Option */}
       {!priority && <UpdateOrder order={order} />}
     </div>
   );
