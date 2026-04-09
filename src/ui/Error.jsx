@@ -10,10 +10,10 @@ function Error() {
       <div className="text-6xl">😢</div>
 
       <div className="space-y-3">
-        <h1 className="text-3xl font-bold text-stone-900 dark:text-white">
+        <h1 className="text-3xl font-bold text-stone-900">
           Something went wrong!
         </h1>
-        <p className="max-w-md text-lg text-stone-600 dark:text-stone-400">
+        <p className="max-w-md text-lg text-stone-600">
           {error.data ||
             error.message ||
             'An unexpected error occurred. Please try again.'}

@@ -24,7 +24,7 @@ function MenuItem({ pizza }) {
   }
 
   return (
-    <li className="rounded-lg border border-stone-200 bg-white p-4 transition-all duration-300 hover:border-amber-400 dark:border-stone-700 dark:bg-stone-900 dark:hover:border-amber-400">
+    <li className="rounded-lg border border-stone-200 bg-white p-4 transition-all duration-300 hover:border-amber-400">
       <div className="flex gap-4">
         {/* Image Section */}
         <div className="flex-shrink-0">
@@ -41,8 +41,8 @@ function MenuItem({ pizza }) {
         <div className="flex flex-1 flex-col">
           {/* Title & Ingredients */}
           <div className="mb-2">
-            <h3 className="font-bold text-stone-900 dark:text-white">{name}</h3>
-            <p className="text-xs italic text-stone-500 dark:text-stone-400">
+            <h3 className="font-bold text-stone-900">{name}</h3>
+            <p className="text-xs italic text-stone-500">
               {ingredients.join(', ')}
             </p>
           </div>
@@ -52,11 +52,11 @@ function MenuItem({ pizza }) {
             {/* Price */}
             <div>
               {!soldOut ? (
-                <p className="font-bold text-amber-600 dark:text-amber-400">
+                <p className="font-bold text-amber-600">
                   {formatCurrency(unitPrice)}
                 </p>
               ) : (
-                <p className="text-xs font-semibold uppercase text-red-500 dark:text-red-400">
+                <p className="text-xs font-semibold uppercase text-red-500">
                   Sold out
                 </p>
               )}

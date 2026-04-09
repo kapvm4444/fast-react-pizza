@@ -18,16 +18,16 @@ function Cart() {
       <LinkButton to="/menu">&larr; Back to menu</LinkButton>
 
       <div>
-        <h2 className="text-2xl font-bold text-stone-900 dark:text-white">
+        <h2 className="text-2xl font-bold text-stone-900">
           Your cart, {username}
         </h2>
-        <p className="mt-1 text-stone-500 dark:text-stone-400">
+        <p className="mt-1 text-stone-500">
           {cart.length} item{cart.length !== 1 ? 's' : ''} in your order
         </p>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-stone-200 dark:border-stone-700">
-        <ul className="divide-y divide-stone-200 dark:divide-stone-700">
+      <div className="overflow-hidden rounded-lg border border-stone-200">
+        <ul className="divide-y divide-stone-200">
           {cart.map((item) => (
             <CartItem item={item} key={item.pizzaId} />
           ))}

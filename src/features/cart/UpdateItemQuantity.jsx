@@ -20,7 +20,7 @@ export default function UpdateItemQuantity({ pizzaId }) {
       >
         −
       </Button>
-      <span className="w-6 text-center font-bold text-stone-900 dark:text-stone-100">
+      <span className="w-6 text-center font-bold text-stone-900">
         {quantity}
       </span>
       <Button

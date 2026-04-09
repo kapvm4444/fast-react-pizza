@@ -6,10 +6,10 @@ function EmptyCart() {
       <div className="text-6xl">🛒</div>
 
       <div className="space-y-3 text-center">
-        <h2 className="text-2xl font-bold text-stone-900 dark:text-white">
+        <h2 className="text-2xl font-bold text-stone-900">
           Your cart is empty
         </h2>
-        <p className="text-stone-600 dark:text-stone-400">
+        <p className="text-stone-600">
           Start adding some delicious pizzas to your order!
         </p>
       </div>

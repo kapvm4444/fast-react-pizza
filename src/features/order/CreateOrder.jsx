@@ -44,20 +44,20 @@ function CreateOrder() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-stone-900 dark:text-white">
+        <h2 className="text-3xl font-bold text-stone-900">
           Ready to order? 🎉
         </h2>
-        <p className="mt-2 text-stone-500 dark:text-stone-400">
+        <p className="mt-2 text-stone-500">
           Fill in your details to complete your order
         </p>
       </div>
 
       <Form method="POST" className="space-y-6">
         {/* Form Section */}
-        <div className="space-y-5 rounded-lg border border-stone-200 bg-white p-6 dark:border-stone-700 dark:bg-stone-900">
+        <div className="space-y-5 rounded-lg border border-stone-200 bg-white p-6">
           {/* Customer Name */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-stone-700 dark:text-stone-300">
+            <label className="text-sm font-semibold text-stone-700">
               First Name
             </label>
             <input
@@ -71,12 +71,12 @@ function CreateOrder() {
 
           {/* Phone Number */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-stone-700 dark:text-stone-300">
+            <label className="text-sm font-semibold text-stone-700">
               Phone Number
             </label>
             <input className="input" type="tel" name="phone" required />
             {formErrors?.phone && (
-              <p className="mt-1 rounded-md bg-red-100 p-3 text-xs text-red-700 dark:bg-red-900 dark:text-red-200">
+              <p className="mt-1 rounded-md bg-red-100 p-3 text-xs text-red-700">
                 ⚠️ {formErrors.phone}
               </p>
             )}
@@ -84,42 +84,42 @@ function CreateOrder() {
 
           {/* Address */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-stone-700 dark:text-stone-300">
+            <label className="text-sm font-semibold text-stone-700">
               Address
             </label>
-            <div className="relative">
-              <input
-                className="input w-full"
-                type="text"
-                name="address"
-                defaultValue={address}
-                required
-              />
-              {!position.latitude && !position.longitude && (
-                <Button
-                  type="small"
-                  disabled={isLoadingAddress}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(fetchAddress());
-                  }}
-                  className="absolute right-2 top-2"
-                >
-                  📍 Get Position
-                </Button>
-              )}
-            </div>
+
+            <input
+              className="input w-full"
+              type="text"
+              name="address"
+              defaultValue={address}
+              required
+            />
+            {!position.latitude && !position.longitude && (
+              <Button
+                type="small"
+                disabled={isLoadingAddress}
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(fetchAddress());
+                }}
+                className="relative w-fit"
+              >
+                📍 Get Position
+              </Button>
+            )}
+
             {addressStatus === 'error' && (
-              <p className="mt-1 rounded-md bg-red-100 p-3 text-xs text-red-700 dark:bg-red-900 dark:text-red-200">
+              <p className="mt-1 rounded-md bg-red-100 p-3 text-xs text-red-700">
                 ⚠️ {errorMessage}
               </p>
             )}
           </div>
 
           {/* Priority Checkbox */}
-          <div className="flex items-center gap-3 border-t border-stone-200 py-4 dark:border-stone-700">
+          <div className="flex items-center gap-3 border-t border-stone-200 py-4">
             <input
-              className="h-5 w-5 cursor-pointer rounded accent-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 dark:focus:ring-amber-300"
+              className="h-5 w-5 cursor-pointer rounded accent-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
               type="checkbox"
               name="priority"
               id="priority"
@@ -128,11 +128,11 @@ function CreateOrder() {
             />
             <label
               htmlFor="priority"
-              className="cursor-pointer font-medium text-stone-700 dark:text-stone-300"
+              className="cursor-pointer font-medium text-stone-700"
             >
               🚀 Give your order priority for faster delivery
               {withPriority && (
-                <span className="ml-2 font-bold text-amber-600 dark:text-amber-400">
+                <span className="ml-2 font-bold text-amber-600">
                   (+{formatCurrency(priorityPrice)})
                 </span>
               )}
@@ -141,21 +141,21 @@ function CreateOrder() {
         </div>
 
         {/* Order Summary */}
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-6 dark:border-stone-700 dark:bg-stone-900">
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-6">
           <div className="space-y-3">
-            <div className="flex justify-between text-stone-700 dark:text-stone-300">
+            <div className="flex justify-between text-stone-700">
               <span>Subtotal:</span>
               <span>{formatCurrency(totalCartPrice)}</span>
             </div>
             {withPriority && (
-              <div className="flex justify-between text-stone-700 dark:text-stone-300">
+              <div className="flex justify-between text-stone-700">
                 <span>Priority fee (20%):</span>
                 <span>{formatCurrency(priorityPrice)}</span>
               </div>
             )}
-            <div className="flex justify-between border-t border-amber-200 pt-3 text-lg font-bold text-stone-900 dark:border-stone-700 dark:text-white">
+            <div className="flex justify-between border-t border-amber-200 pt-3 text-lg font-bold text-stone-900">
               <span>Total:</span>
-              <span className="text-amber-600 dark:text-amber-400">
+              <span className="text-amber-600">
                 {formatCurrency(totalPrice)}
               </span>
             </div>

@@ -22,7 +22,15 @@ const themeSlice = createSlice({
     toggleDarkMode(state) {
       state.darkMode = !state.darkMode;
       try {
-        localStorage.setItem('theme', state.darkMode ? 'dark' : 'light');
+        const newTheme = state.darkMode ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+
+        // Also update DOM immediately
+        if (state.darkMode) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
       } catch (e) {
         console.error('localStorage error:', e);
       }
@@ -30,7 +38,15 @@ const themeSlice = createSlice({
     setDarkMode(state, action) {
       state.darkMode = action.payload;
       try {
-        localStorage.setItem('theme', action.payload ? 'dark' : 'light');
+        const newTheme = action.payload ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+
+        // Also update DOM immediately
+        if (action.payload) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
       } catch (e) {
         console.error('localStorage error:', e);
       }

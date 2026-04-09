@@ -21,7 +21,7 @@ function CreateUser() {
   return (
     <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
       <div className="space-y-3">
-        <p className="text-base font-medium text-stone-600 dark:text-stone-400">
+        <p className="text-base font-medium text-stone-600">
           👋 Welcome! Please start by telling us your name:
         </p>
       </div>

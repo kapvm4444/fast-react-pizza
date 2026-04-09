@@ -11,14 +11,14 @@ function Home() {
         <p className="animate-bounce text-5xl sm:text-6xl md:text-7xl">🍕</p>
       </div>
 
-      <h1 className="mb-6 text-3xl font-bold tracking-tight text-stone-900 dark:text-white sm:text-4xl md:text-5xl">
+      <h1 className="mb-6 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
         The best pizza.
       </h1>
-      <p className="mb-10 text-lg font-semibold text-amber-600 dark:text-amber-400 sm:text-xl">
+      <p className="mb-10 text-lg font-semibold text-amber-600 sm:text-xl">
         Straight out of the oven, straight to you.
       </p>
 
-      <p className="mx-auto mb-10 max-w-md text-stone-600 dark:text-stone-300">
+      <p className="mx-auto mb-10 max-w-md text-stone-600">
         Experience the finest freshly baked pizzas delivered to your doorstep.
         Quality, speed, and taste guaranteed.
       </p>
