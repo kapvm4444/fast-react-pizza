@@ -1,5 +1,4 @@
 import { formatCurrency } from '../../utils/helpers';
-import { useDispatch } from 'react-redux';
 import DeleteItem from './DeleteItem.jsx';
 import UpdateItemQuantity from './UpdateItemQuantity.jsx';
 
