@@ -108,21 +108,6 @@ This project serves as a comprehensive showcase of advanced React patterns inclu
 
 ---
 
-## 📸 Screenshots / Demo
-
-| View | Screenshot |
-|------|-----------|
-| **Home Screen** | ![Home](./assets/home-screen.png) _Landing page with user greeting and order CTA_ |
-| **Menu Browser** | ![Menu](./assets/menu-screen.png) _Interactive pizza menu with prices and details_ |
-| **Shopping Cart** | ![Cart](./assets/cart-screen.png) _Cart summary with quantity controls_ |
-| **Order Form** | ![Order](./assets/order-form.png) _Checkout form with auto-detected address_ |
-| **Order Tracking** | ![Tracking](./assets/order-tracking.png) _Real-time order status and delivery ETA_ |
-| **Mobile View** | ![Mobile](./assets/mobile-view.png) _Fully responsive mobile experience_ |
-
-> 📝 **Note:** Replace image paths with actual screenshots from your deployment
-
----
-
 ## 🚀 Getting Started (For Developers)
 
 ### Prerequisites
@@ -397,7 +382,7 @@ We welcome contributions! Here's how to get involved:
 
 ---
 
-## 👤 Author
+## Author
 
 Made with ❤️ by [Khush Vachhani](https://github.com/kapvm4444)
 
