@@ -15,30 +15,6 @@ const isValidPhone = (str) =>
     str,
   );
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
-
 function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -66,37 +42,52 @@ function CreateOrder() {
   if (cart.length === 0) return <EmptyCart />;
 
   return (
-    <div className="px-4 py-6">
-      <h2 className="mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-3xl font-bold text-stone-900">
+          Ready to order? 🎉
+        </h2>
+        <p className="mt-2 text-stone-500">
+          Fill in your details to complete your order
+        </p>
+      </div>
 
-      {/* <Form method="POST" action="/order/new"> */}
-      <Form method="POST">
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-          <label className="sm:basis-40">First Name</label>
-          <input
-            className="input grow"
-            type="text"
-            name="customer"
-            defaultValue={username}
-            required
-          />
-        </div>
+      <Form method="POST" className="space-y-6">
+        {/* Form Section */}
+        <div className="space-y-5 rounded-lg border border-stone-200 bg-white p-6">
+          {/* Customer Name */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-stone-700">
+              First Name
+            </label>
+            <input
+              className="input"
+              type="text"
+              name="customer"
+              defaultValue={username}
+              required
+            />
+          </div>
 
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-          <label className="sm:basis-40">Phone number</label>
-          <div className="grow">
-            <input className="input w-full" type="tel" name="phone" required />
+          {/* Phone Number */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-stone-700">
+              Phone Number
+            </label>
+            <input className="input" type="tel" name="phone" required />
             {formErrors?.phone && (
-              <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
-                {formErrors.phone}
+              <p className="mt-1 rounded-md bg-red-100 p-3 text-xs text-red-700">
+                ⚠️ {formErrors.phone}
               </p>
             )}
           </div>
-        </div>
 
-        <div className="relative mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-          <label className="sm:basis-40">Address</label>
-          <div className="grow">
+          {/* Address */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-stone-700">
+              Address
+            </label>
+
             <input
               className="input w-full"
               type="text"
@@ -104,15 +95,7 @@ function CreateOrder() {
               defaultValue={address}
               required
             />
-            {addressStatus === 'error' && (
-              <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
-                {errorMessage}
-              </p>
-            )}
-          </div>
-
-          {!position.latitude && !position.longitude && (
-            <span className={'absolute right-1 top-1 z-10 md:right-1 md:top-1'}>
+            {!position.latitude && !position.longitude && (
               <Button
                 type="small"
                 disabled={isLoadingAddress}
@@ -120,27 +103,66 @@ function CreateOrder() {
                   e.preventDefault();
                   dispatch(fetchAddress());
                 }}
+                className="relative w-fit"
               >
-                Get Position
+                📍 Get Position
               </Button>
-            </span>
-          )}
+            )}
+
+            {addressStatus === 'error' && (
+              <p className="mt-1 rounded-md bg-red-100 p-3 text-xs text-red-700">
+                ⚠️ {errorMessage}
+              </p>
+            )}
+          </div>
+
+          {/* Priority Checkbox */}
+          <div className="flex items-center gap-3 border-t border-stone-200 py-4">
+            <input
+              className="h-5 w-5 cursor-pointer rounded accent-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+              type="checkbox"
+              name="priority"
+              id="priority"
+              value={withPriority}
+              onChange={(e) => setWithPriority(e.target.checked)}
+            />
+            <label
+              htmlFor="priority"
+              className="cursor-pointer font-medium text-stone-700"
+            >
+              🚀 Give your order priority for faster delivery
+              {withPriority && (
+                <span className="ml-2 font-bold text-amber-600">
+                  (+{formatCurrency(priorityPrice)})
+                </span>
+              )}
+            </label>
+          </div>
         </div>
 
-        <div className="mb-12 flex items-center gap-5">
-          <input
-            className="h-6 w-6 accent-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2"
-            type="checkbox"
-            name="priority"
-            id="priority"
-            value={withPriority}
-            onChange={(e) => setWithPriority(e.target.checked)}
-          />
-          <label htmlFor="priority" className="font-medium">
-            Want to yo give your order priority?
-          </label>
+        {/* Order Summary */}
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-6">
+          <div className="space-y-3">
+            <div className="flex justify-between text-stone-700">
+              <span>Subtotal:</span>
+              <span>{formatCurrency(totalCartPrice)}</span>
+            </div>
+            {withPriority && (
+              <div className="flex justify-between text-stone-700">
+                <span>Priority fee (20%):</span>
+                <span>{formatCurrency(priorityPrice)}</span>
+              </div>
+            )}
+            <div className="flex justify-between border-t border-amber-200 pt-3 text-lg font-bold text-stone-900">
+              <span>Total:</span>
+              <span className="text-amber-600">
+                {formatCurrency(totalPrice)}
+              </span>
+            </div>
+          </div>
         </div>
 
+        {/* Hidden Inputs */}
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <input
@@ -152,10 +174,16 @@ function CreateOrder() {
                 : ''
             }
           />
-          <Button disabled={isSubmitting} type="primary">
+
+          {/* Submit Button */}
+          <Button
+            disabled={isSubmitting || isLoadingAddress}
+            type="primary"
+            className="w-full"
+          >
             {isSubmitting && isLoadingAddress
-              ? 'Placing order.... '
-              : `Order now from ${formatCurrency(totalPrice)}`}
+              ? '⏳ Placing your order...'
+              : `✓ Place Order`}
           </Button>
         </div>
       </Form>

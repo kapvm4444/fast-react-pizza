@@ -5,30 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from './cartSlice.js';
 import EmptyCart from './EmptyCart.jsx';
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
-
 function Cart() {
   const cart = useSelector((state) => state.cart.cart);
   const username = useSelector((state) => state.user.username);
@@ -38,20 +14,29 @@ function Cart() {
   if (cart.length === 0) return <EmptyCart />;
 
   return (
-    <div className="px-4 py-3">
+    <div className="space-y-6">
       <LinkButton to="/menu">&larr; Back to menu</LinkButton>
 
-      <h2 className="mt-7 text-xl font-semibold">Your cart, {username}</h2>
+      <div>
+        <h2 className="text-2xl font-bold text-stone-900">
+          Your cart, {username}
+        </h2>
+        <p className="mt-1 text-stone-500">
+          {cart.length} item{cart.length !== 1 ? 's' : ''} in your order
+        </p>
+      </div>
 
-      <ul className="mt-3 divide-y divide-stone-200 border-b">
-        {cart.map((item) => (
-          <CartItem item={item} key={item.pizzaId} />
-        ))}
-      </ul>
+      <div className="overflow-hidden rounded-lg border border-stone-200">
+        <ul className="divide-y divide-stone-200">
+          {cart.map((item) => (
+            <CartItem item={item} key={item.pizzaId} />
+          ))}
+        </ul>
+      </div>
 
-      <div className="mt-6 space-x-2">
+      <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
         <Button to="/order/new" type="primary">
-          Order pizzas
+          Proceed to Order
         </Button>
 
         <Button type="secondary" onClick={() => dispatch(clearCart())}>

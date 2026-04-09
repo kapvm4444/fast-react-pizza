@@ -7,8 +7,8 @@ export default function UpdateOrder({ order }) {
   const fetcher = useFetcher();
 
   return (
-    <fetcher.Form method={'patch'} className={'text-right'}>
-      <Button type={'primary'}>Make Priority</Button>
+    <fetcher.Form method={'patch'} className="text-center">
+      <Button type={'primary'}>🚀 Make Priority (+20%)</Button>
     </fetcher.Form>
   );
 }

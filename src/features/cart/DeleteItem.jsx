@@ -12,7 +12,7 @@ export default function DeleteItem({ pizzaId }) {
 
   return (
     <Button type="small" onClick={handleDeleteItem}>
-      Delete
+      🗑️ Delete
     </Button>
   );
 }

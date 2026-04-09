@@ -4,13 +4,20 @@ import Username from '../features/user/Username';
 
 function Header() {
   return (
-    <header className="flex items-center justify-between border-b border-stone-200 bg-yellow-400 px-4 py-3 uppercase sm:px-6">
-      <Link to="/" className="tracking-widest">
-        Fast React Pizza Co.
-      </Link>
+    <header className="border-b border-stone-200 bg-white px-4 py-4 sm:px-6">
+      <div className="flex items-center justify-between gap-4">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-lg font-bold text-stone-900 transition-colors hover:text-amber-600"
+        >
+          <span className="text-2xl">🍕</span>
+          <span className="hidden sm:inline">Fast React Pizza</span>
+        </Link>
 
-      <SearchOrder />
-      <Username />
+        <SearchOrder />
+
+        <Username />
+      </div>
     </header>
   );
 }

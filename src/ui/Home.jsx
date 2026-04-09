@@ -6,14 +6,22 @@ function Home() {
   const username = useSelector((state) => state.user.username);
 
   return (
-    <div className="my-10 px-4 text-center sm:my-16">
-      <h1 className="mb-8  text-xl font-semibold md:text-3xl">
+    <div className="my-12 px-4 text-center sm:my-20 md:my-24">
+      <div className="mb-12 inline-block">
+        <p className="animate-bounce text-5xl sm:text-6xl md:text-7xl">🍕</p>
+      </div>
+
+      <h1 className="mb-6 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
         The best pizza.
-        <br />
-        <span className="text-yellow-500">
-          Straight out of the oven, straight to you.
-        </span>
       </h1>
+      <p className="mb-10 text-lg font-semibold text-amber-600 sm:text-xl">
+        Straight out of the oven, straight to you.
+      </p>
+
+      <p className="mx-auto mb-10 max-w-md text-stone-600">
+        Experience the finest freshly baked pizzas delivered to your doorstep.
+        Quality, speed, and taste guaranteed.
+      </p>
 
       {!username ? (
         <CreateUser />

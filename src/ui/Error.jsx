@@ -6,11 +6,21 @@ function Error() {
   console.log(error);
 
   return (
-    <div>
-      <h1>Something went wrong 😢</h1>
-      <p>{error.data || error.message}</p>
+    <div className="flex flex-col items-center justify-center gap-6 px-4 py-16 text-center">
+      <div className="text-6xl">😢</div>
 
-      <LinkButton to="-1">&larr; Go back</LinkButton>
+      <div className="space-y-3">
+        <h1 className="text-3xl font-bold text-stone-900">
+          Something went wrong!
+        </h1>
+        <p className="max-w-md text-lg text-stone-600">
+          {error.data ||
+            error.message ||
+            'An unexpected error occurred. Please try again.'}
+        </p>
+      </div>
+
+      <LinkButton to="-1">← Go back</LinkButton>
     </div>
   );
 }

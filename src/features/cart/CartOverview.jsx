@@ -15,12 +15,19 @@ function CartOverview() {
   if (cartLength === 0) return null;
 
   return (
-    <div className="flex items-center justify-between bg-stone-800 px-4 py-4 text-sm uppercase text-stone-200 sm:px-6 md:text-base">
-      <p className="space-x-4 font-semibold text-stone-300 sm:space-x-6">
-        <span>{pizzaQuantity} pizzas</span>
-        <span>{formatCurrency(pizzaPrice)}</span>
+    <div className="flex items-center justify-between bg-stone-800 px-4 py-4 text-sm font-semibold text-stone-100 sm:px-6 md:text-base">
+      <p className="space-x-4 text-stone-200 sm:space-x-6">
+        <span>
+          📦 {pizzaQuantity} pizza{pizzaQuantity !== 1 ? 's' : ''}
+        </span>
+        <span>💰 {formatCurrency(pizzaPrice)}</span>
       </p>
-      <Link to="/cart">Open cart &rarr;</Link>
+      <Link
+        to="/cart"
+        className="text-amber-400 transition-colors duration-300 hover:text-amber-300"
+      >
+        Open cart →
+      </Link>
     </div>
   );
 }

@@ -24,38 +24,58 @@ function MenuItem({ pizza }) {
   }
 
   return (
-    <li className="flex gap-4 py-2">
-      <img
-        src={imageUrl}
-        alt={name}
-        className={`h-24 ${soldOut ? 'opacity-70 grayscale' : ''}`}
-      />
-      <div className="flex grow flex-col pt-0.5">
-        <p className="font-medium">{name}</p>
-        <p className="text-sm capitalize italic text-stone-500">
-          {ingredients.join(', ')}
-        </p>
-        <div className="mt-auto flex items-center justify-between">
-          {!soldOut ? (
-            <p className="text-sm">{formatCurrency(unitPrice)}</p>
-          ) : (
-            <p className="text-sm font-medium uppercase text-stone-500">
-              Sold out
+    <li className="rounded-lg border border-stone-200 bg-white p-4 transition-all duration-300 hover:border-amber-400">
+      <div className="flex gap-4">
+        {/* Image Section */}
+        <div className="flex-shrink-0">
+          <img
+            src={imageUrl}
+            alt={name}
+            className={`h-24 w-24 rounded-lg object-cover ${
+              soldOut ? 'opacity-50 grayscale' : ''
+            }`}
+          />
+        </div>
+
+        {/* Content Section */}
+        <div className="flex flex-1 flex-col">
+          {/* Title & Ingredients */}
+          <div className="mb-2">
+            <h3 className="font-bold text-stone-900">{name}</h3>
+            <p className="text-xs italic text-stone-500">
+              {ingredients.join(', ')}
             </p>
-          )}
+          </div>
 
-          {itemQuantityInCart > 0 && (
-            <div className="flex items-center justify-center gap-3 sm:gap-8">
-              <UpdateItemQuantity pizzaId={id} />
-              <DeleteItem pizzaId={id} />
+          {/* Price & Actions */}
+          <div className="mt-auto flex items-center justify-between gap-3">
+            {/* Price */}
+            <div>
+              {!soldOut ? (
+                <p className="font-bold text-amber-600">
+                  {formatCurrency(unitPrice)}
+                </p>
+              ) : (
+                <p className="text-xs font-semibold uppercase text-red-500">
+                  Sold out
+                </p>
+              )}
             </div>
-          )}
 
-          {!soldOut && itemQuantityInCart <= 0 && (
-            <Button onClick={handleAddCart} type="small">
-              Add to cart
-            </Button>
-          )}
+            {/* Controls */}
+            {itemQuantityInCart > 0 && (
+              <div className="flex items-center gap-2">
+                <UpdateItemQuantity pizzaId={id} />
+                <DeleteItem pizzaId={id} />
+              </div>
+            )}
+
+            {!soldOut && itemQuantityInCart === 0 && (
+              <Button onClick={handleAddCart} type="small">
+                Add to cart
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </li>

@@ -12,27 +12,36 @@ function CreateUser() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(updateName(username));
-    navigate('/menu');
+    if (username.trim()) {
+      dispatch(updateName(username));
+      navigate('/menu');
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <p className="mb-4 text-sm text-stone-600 md:text-base">
-        👋 Welcome! Please start by telling us your name:
-      </p>
+    <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
+      <div className="space-y-3">
+        <p className="text-base font-medium text-stone-600">
+          👋 Welcome! Please start by telling us your name:
+        </p>
+      </div>
 
-      <input
-        type="text"
-        placeholder="Your full name"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="input mb-8 w-72"
-      />
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Your full name"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="input w-full"
+          autoFocus
+        />
+      </div>
 
-      {username !== '' && (
-        <div>
-          <Button type="primary">Start ordering</Button>
+      {username.trim() !== '' && (
+        <div className="animate-in fade-in">
+          <Button type="primary" className="w-full">
+            🚀 Start Ordering
+          </Button>
         </div>
       )}
     </form>
