@@ -19,8 +19,8 @@
 
 ## 🎯 Live Demo
 
-> 🔗 **[View Live Demo](https://pizza.khush.pro)** 
-> 
+> 🔗 **[View Live Demo](https://pizza.khush.pro)**
+>
 ---
 
 ## 📌 About the Project
@@ -105,21 +105,6 @@ This project serves as a comprehensive showcase of advanced React patterns inclu
 | **APIs** | REST (Fetch API) | Native |
 | **Geolocation** | Browser Geolocation API | Native |
 | **Reverse Geocoding** | BigDataCloud API | v1.0 |
-
----
-
-## 📸 Screenshots / Demo
-
-| View | Screenshot |
-|------|-----------|
-| **Home Screen** | ![Home](./assets/home-screen.png) _Landing page with user greeting and order CTA_ |
-| **Menu Browser** | ![Menu](./assets/menu-screen.png) _Interactive pizza menu with prices and details_ |
-| **Shopping Cart** | ![Cart](./assets/cart-screen.png) _Cart summary with quantity controls_ |
-| **Order Form** | ![Order](./assets/order-form.png) _Checkout form with auto-detected address_ |
-| **Order Tracking** | ![Tracking](./assets/order-tracking.png) _Real-time order status and delivery ETA_ |
-| **Mobile View** | ![Mobile](./assets/mobile-view.png) _Fully responsive mobile experience_ |
-
-> 📝 **Note:** Replace image paths with actual screenshots from your deployment
 
 ---
 
@@ -289,49 +274,49 @@ fast-react-pizza/
 ### Getting Started as a Customer
 
 #### 1. **Enter Your Name**
-   - Upon landing, you'll see the welcome screen
-   - Enter your name to personalize your experience
-   - Your name will be remembered for this session
+- Upon landing, you'll see the welcome screen
+- Enter your name to personalize your experience
+- Your name will be remembered for this session
 
 #### 2. **Browse the Menu**
-   - Click **"Continue Ordering"** to view available pizzas
-   - Each pizza shows:
-     - 🍕 Pizza name and description
-     - 💶 Price in EUR
-     - ➕ Button to add to cart
+- Click **"Continue Ordering"** to view available pizzas
+- Each pizza shows:
+    - 🍕 Pizza name and description
+    - 💶 Price in EUR
+    - ➕ Button to add to cart
 
 #### 3. **Build Your Cart**
-   - Click **➕** next to any pizza to add it
-   - A confirmation appears at the bottom (cart overview)
-   - Adjust quantities or remove items anytime
-   - See real-time total price
+- Click **➕** next to any pizza to add it
+- A confirmation appears at the bottom (cart overview)
+- Adjust quantities or remove items anytime
+- See real-time total price
 
 #### 4. **Proceed to Checkout**
-   - Click the **Cart** button in the header
-   - Review your items and quantities
-   - Adjust quantities or remove items if needed
-   - Click **"Order Now"** when ready
+- Click the **Cart** button in the header
+- Review your items and quantities
+- Adjust quantities or remove items if needed
+- Click **"Order Now"** when ready
 
 #### 5. **Complete Your Order**
-   - **Enter Your Phone:** Required for delivery contact
-   - **Confirm Address:** The app detects your location automatically
-   - **Edit Address:** Click to manually change if needed
-   - **Optional Priority:** Check "Make it priority" for rush delivery (+20%)
-   - Click **"Order Now"** to submit
+- **Enter Your Phone:** Required for delivery contact
+- **Confirm Address:** The app detects your location automatically
+- **Edit Address:** Click to manually change if needed
+- **Optional Priority:** Check "Make it priority" for rush delivery (+20%)
+- Click **"Order Now"** to submit
 
 #### 6. **Track Your Order**
-   - You'll receive a **unique Order ID** (e.g., `#123456`)
-   - Save this ID to track your order anytime
-   - Click **"Search Order"** in the header to look up status
-   - See:
-     - Current order status
-     - Estimated delivery time
-     - Items ordered
-     - Option to mark as priority
+- You'll receive a **unique Order ID** (e.g., `#123456`)
+- Save this ID to track your order anytime
+- Click **"Search Order"** in the header to look up status
+- See:
+    - Current order status
+    - Estimated delivery time
+    - Items ordered
+    - Option to mark as priority
 
 #### 7. **Receive Your Pizza** 🍕
-   - Delivery time updates in real-time
-   - Once delivered, you can order again!
+- Delivery time updates in real-time
+- Once delivered, you can order again!
 
 ### Key Features Explained
 
@@ -370,9 +355,9 @@ We welcome contributions! Here's how to get involved:
    ```
 
 4. **Make Your Changes**
-   - Follow existing code style
-   - Add comments for complex logic
-   - Test thoroughly locally
+    - Follow existing code style
+    - Add comments for complex logic
+    - Test thoroughly locally
 
 5. **Commit & Push**
    ```bash
@@ -382,10 +367,10 @@ We welcome contributions! Here's how to get involved:
    ```
 
 6. **Open a Pull Request**
-   - Go to the main repository
-   - Click "New Pull Request"
-   - Describe your changes clearly
-   - Reference any related issues
+    - Go to the main repository
+    - Click "New Pull Request"
+    - Describe your changes clearly
+    - Reference any related issues
 
 ### Code Guidelines
 
@@ -397,7 +382,7 @@ We welcome contributions! Here's how to get involved:
 
 ---
 
-## 👤 Author
+## Author
 
 Made with ❤️ by [Khush Vachhani](https://github.com/kapvm4444)
 
